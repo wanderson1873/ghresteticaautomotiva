@@ -1,0 +1,36 @@
+# O que NÃO vai para o contexto de build do Docker.
+#
+# Não confundir com a lista do que é publicado: quem decide isso é
+# ferramentas/preparar-publicacao.py, na primeira etapa do Dockerfile. Aqui o
+# objetivo é só não mandar centenas de MB para o daemon do Docker a cada build.
+
+# acervo bruto do Instagram (237 MB) — nem entra no repositório
+ghr_esteticaautomotiva/
+
+# histórico do git: o build não precisa dele
+.git/
+.gitignore
+
+# resultado de um build anterior — a etapa 1 recria a pasta do zero
+publicar/
+
+# fotos ANTES da troca de placa (placa real de cliente). O pacote de publicação
+# já as exclui, mas elas também não têm por que entrar no contexto de build:
+# quanto menos caminhos até a imagem final, menos chance de irem ao ar.
+assets/img/gallery/_originais/
+
+# caches e lixo de sistema
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editores e configuração local
+.vscode/
+.idea/
+.claude/
+*.swp
+
+# arte original — grande e sem uso no site publicado
+logo - GHR.pdf

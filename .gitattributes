@@ -1,0 +1,24 @@
+# Este projeto é editado no Windows (core.autocrlf=true) e construído no Linux,
+# dentro do container. Sem estas regras, o git gravaria CRLF em arquivos que o
+# Linux precisa ler com LF — um Dockerfile ou um script com CRLF quebra o build
+# com erros difíceis de ligar à causa.
+
+# Padrão: normalizar para LF dentro do repositório.
+* text=auto eol=lf
+
+# Arquivos que o container executa ou interpreta: LF sempre, sem exceção.
+Dockerfile      text eol=lf
+*.conf          text eol=lf
+*.sh            text eol=lf
+*.py            text eol=lf
+
+# Binários: o git não deve tentar converter nada.
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.mp4  binary
+*.woff  binary
+*.woff2 binary

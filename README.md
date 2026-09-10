@@ -37,6 +37,10 @@ contato/index.html            Contato + formulário que abre o WhatsApp
 sitemap.xml  robots.txt       SEO (o sitemap é gerado — ver ferramentas/)
 publicar/                     Pacote pronto para subir (gerado)
 
+Dockerfile                    Imagem nginx do site (build em duas etapas)
+.dockerignore                 O que não entra no contexto de build
+docker/nginx.conf             gzip, cache, cabeçalhos e caminhos recusados
+
 assets/
   css/style.css               Design system inteiro (cores, tipografia, animações)
   js/site.js                  Único <script> das páginas: carrega tudo abaixo
@@ -210,6 +214,79 @@ de destaque de limpeza de estofado (`GHR.estofado` e `GHR.estofadoItens`).
       `python ferramentas/definir-dominio.py https://www.seudominio.com.br`
 - [ ] Regerar o que depende do domínio: `gerar-paginas-servicos.py` e `gerar-sitemap.py`
 - [ ] Montar o pacote e subir **somente** ele: `preparar-publicacao.py` -> sobe `publicar/`
+
+---
+
+## Hospedagem na VPS (Docker + Easypanel)
+
+O site roda em um container **nginx** construído a partir do `Dockerfile` da
+raiz. A imagem tem cerca de 200 MB e serve 541 arquivos.
+
+### Como a imagem é montada
+
+O build tem duas etapas, e a primeira existe por um motivo de segurança:
+
+1. **build** — roda `ferramentas/preparar-publicacao.py`, que monta `publicar/`
+   por lista de permissão.
+2. **runtime** — copia **apenas** `publicar/` para dentro do nginx.
+
+Um `COPY . .` direto colocaria `assets/img/gallery/_originais/` (fotos antes da
+troca de placa, com placa real de cliente) e os scripts Python em endereços
+públicos do site. Com a etapa de build isso não acontece, e o script ainda
+falha de propósito se encontrar material proibido no pacote — o build quebra em
+vez de o material ir ao ar. O `docker/nginx.conf` recusa esses caminhos como
+segunda tranca.
+
+### Testar localmente
+
+```
+docker build -t ghr-site .
+docker run --rm -p 8080:80 ghr-site
+```
+
+Depois abra <http://localhost:8080>.
+
+### Configurar no Easypanel
+
+Crie um serviço do tipo **App** e preencha:
+
+| Campo | Valor |
+|---|---|
+| Source | GitHub → `wanderson1873/ghresteticaautomotiva`, branch `main` |
+| Build method | **Dockerfile** (caminho: `Dockerfile`) |
+| Port / Proxy port | **80** |
+| Domain | o domínio do site, com HTTPS ligado |
+
+O Easypanel (Traefik) cuida do certificado e do redirecionamento http→https —
+o container só fala HTTP na porta 80, de propósito. O `HEALTHCHECK` do
+Dockerfile faz o painel reiniciar sozinho se o nginx parar de responder.
+
+Não é preciso volume: o site é estático e não grava nada. Para publicar uma
+alteração, basta `git push` e mandar o Easypanel reconstruir.
+
+### Antes de apontar o domínio
+
+O site ainda usa o endereço provisório nas tags canonical, Open Graph e no
+sitemap. Com o domínio real em mãos:
+
+```
+python ferramentas/definir-dominio.py https://www.seudominio.com.br
+python ferramentas/gerar-paginas-servicos.py
+python ferramentas/gerar-sitemap.py
+```
+
+Depois `git commit` e `git push` — o Easypanel reconstrói com os endereços
+certos.
+
+### O que o nginx faz
+
+- **gzip** em HTML, CSS, JS, XML e SVG (o CSS cai de 59 KB para 14 KB). JPG,
+  WebP e PNG ficam de fora: já são comprimidos.
+- **cache** de um ano em CSS e JS, que entram com `?v=` e mudam de URL a cada
+  versão; 30 dias em imagens e fontes; e revalidação sempre no HTML, que é
+  quem aponta para a versão nova dos outros.
+- **cabeçalhos** `X-Content-Type-Options`, `X-Frame-Options` e
+  `Referrer-Policy` em todas as respostas.
 
 ---
 
