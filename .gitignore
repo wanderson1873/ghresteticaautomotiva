@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------
+# Acervo bruto original do Instagram: 237 MB de fotos e vídeos, muito acima do
+# que faz sentido versionar. É a matéria-prima de onde saíram as fotos do site,
+# não faz parte do site. Guarde em backup próprio, fora do git.
+# ---------------------------------------------------------------------------
+ghr_esteticaautomotiva/
+
+# ---------------------------------------------------------------------------
+# Pacote de publicação — é gerado, não editado:
+#   python ferramentas/preparar-publicacao.py
+# Versionar significaria manter duas cópias de cada arquivo do site.
+# ---------------------------------------------------------------------------
+publicar/
+
+# --- caches e lixo de sistema ----------------------------------------------
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- editores ---------------------------------------------------------------
+.vscode/
+.idea/
+*.swp

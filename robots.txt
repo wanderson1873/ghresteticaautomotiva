@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Pasta com o material bruto (fotos originais e vídeos) não deve ser indexada.
+Disallow: /ghr_esteticaautomotiva/
+
+Sitemap: https://ghresteticaautomotiva.com.br/sitemap.xml
