@@ -12,7 +12,7 @@
   /* Versão dos arquivos. Entra como ?v= no fim de cada URL para o navegador
      buscar a versão nova em vez de reaproveitar a antiga do cache.
      Depois de alterar CSS ou JS, rode:  python ferramentas/bump-versao.py     */
-  var VERSAO = '20';
+  var VERSAO = '21';
 
   var arquivos = [
     /* dados — é aqui que o conteúdo do site é editado */

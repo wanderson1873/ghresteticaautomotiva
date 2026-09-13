@@ -117,11 +117,17 @@ GHR.initHeader = function () {
      verdadeira ele precisa (1) receber o foco ao abrir, (2) prender Tab dentro
      dele, (3) esconder o resto da página dos leitores de tela e (4) devolver o
      foco ao botão que o abriu. Antes só a classe do body mudava.            */
-  const foraDoDrawer = () =>
-    [...document.body.children].filter(el => el !== drawer && el.nodeType === 1);
+  /* O botão que fecha (o hamburger virado em X) mora no <header>, fora do
+     drawer. Por isso o header não pode ficar inert inteiro — só as partes
+     dele que não são o botão; senão o X aparece na tela mas não recebe toque. */
+  const foraDoDrawer = () => [
+    ...[...document.body.children].filter(el => el !== drawer && el !== hdr && el.nodeType === 1),
+    ...hdr.querySelectorAll('.hdr__logo, .hdr__nav, .btn--desk')
+  ];
 
-  /* elementos que podem receber foco, na ordem em que aparecem */
-  const focaveis = () => [...drawer.querySelectorAll(
+  /* elementos que podem receber foco, na ordem em que aparecem.
+     O botão de fechar entra na lista para o Tab conseguir chegar até ele. */
+  const focaveis = () => [burger, ...drawer.querySelectorAll(
     'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
   )].filter(el => el.offsetParent !== null || el === document.activeElement);
 
@@ -140,7 +146,7 @@ GHR.initHeader = function () {
 
     if (open) {
       drawer.scrollTop = 0;                 // sempre abre no topo da lista
-      const alvo = focaveis()[0];
+      const alvo = focaveis().find(el => el !== burger);
       if (alvo) alvo.focus({ preventScroll: true });
     } else {
       fechaSubmenus();
@@ -149,8 +155,8 @@ GHR.initHeader = function () {
   };
 
   /* Tab e Shift+Tab circulam dentro do menu enquanto ele está aberto */
-  drawer.addEventListener('keydown', e => {
-    if (e.key !== 'Tab') return;
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Tab' || !document.body.classList.contains('menu-open')) return;
     const lista = focaveis();
     if (!lista.length) return;
     const primeiro = lista[0];
