@@ -23,3 +23,10 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# --- nunca publicar ----------------------------------------------------------
+# Fotos ANTES da troca de placa (placas reais). Ficam só na máquina local,
+# como base do ferramentas/aplicar-placas.py.
+assets/img/gallery/_originais/
+# Configuração local do Claude Code.
+.claude/
