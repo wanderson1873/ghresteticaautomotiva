@@ -783,6 +783,25 @@ body.menu-open .drawer__foot{ opacity:1; }
 }
 body.menu-open .wa-float{ transform:translateY(160%); }
 
+/* voltar ao topo — fica logo acima do botão do WhatsApp */
+.topo-float{
+  position:fixed; right:clamp(16px,2.4vw,28px); z-index:79;
+  bottom:calc(clamp(16px,2.4vw,28px) + 56px + 12px);
+  width:46px; height:46px; margin-right:5px; padding:0; border:1px solid var(--line-inv);
+  display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
+  background:rgba(12,16,21,.88); color:#fff; border-radius:50%;
+  backdrop-filter:blur(8px); box-shadow:0 10px 26px -12px rgba(0,0,0,.6);
+  transform:translateY(20px); opacity:0; pointer-events:none;
+  transition:transform .45s var(--ease-out), opacity .35s var(--ease), background .3s var(--ease);
+}
+.topo-float.is-visible{ transform:none; opacity:1; pointer-events:auto; }
+.topo-float:hover{ background:var(--brand); }
+.topo-float:focus-visible{ outline:2px solid var(--brand-lite); outline-offset:3px; }
+@media (max-width:600px){
+  .topo-float{ bottom:calc(14px + env(safe-area-inset-bottom) + 54px + 12px); margin-right:4px; }
+}
+body.menu-open .topo-float{ opacity:0; pointer-events:none; }
+
 /* ------------------- submenu de serviços (header/menu) --------------------
    Os links do painel ficam dentro de .hdr__nav e de .drawer__nav, então
    herdariam a cor branca, a opacidade, o sublinhado azul e — no mobile — a
@@ -1335,7 +1354,8 @@ body.menu-open .wa-float{ transform:translateY(160%); }
   background:var(--paper-3); height:min(68vh, 520px); position:relative;
 }
 .carrossel__item img, .carrossel__item video{ height:100%; width:auto; max-width:none; }
-.carrossel__item--video video{ aspect-ratio:9 / 16; object-fit:contain; background:#000; }
+.carrossel__item--video video{ object-fit:contain; background:#000; }
+.carrossel__item figcaption a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
 .carrossel__item figcaption{
   position:absolute; left:10px; top:10px; padding:.2rem .55rem; border-radius:var(--pill);
   background:rgba(7,9,12,.7); color:#fff; font-size:.72rem; font-weight:600;
@@ -1385,3 +1405,15 @@ body.menu-open .wa-float{ transform:translateY(160%); }
 .cta-ghr__acoes .btn--ghost{ --b-fg:#fff; --b-bd:var(--line-inv); }
 .cta-ghr .cta-ghr__end{ margin-top:1rem; font-size:.85rem; }
 @media (max-width:520px){ .cta-ghr__acoes .btn{ width:100%; justify-content:center; } }
+
+/* faixa "buscamos e entregamos" no fim da página /servicos/ (fundo claro) */
+.section--busca .busca-entrega{
+  margin:0 auto; max-width:640px; justify-content:center;
+  color:var(--fg); background:var(--brand-soft); border-color:rgba(15,98,196,.22); font-size:.98rem;
+}
+.section--busca .busca-entrega b{ color:var(--fg); }
+.section--busca .busca-entrega svg{ color:var(--brand); }
+
+/* faixa de vídeos da home */
+.section--videos .sec-dica{ color:var(--fg-inv-2); }
+.section--videos .carrossel__item{ background:var(--ink-3); }

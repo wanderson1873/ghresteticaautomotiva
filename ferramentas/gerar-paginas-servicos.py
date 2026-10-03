@@ -26,7 +26,7 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import config
 import medicao
-from servicos import BLOCOS, FAQ_BUSCA, PORTES, PRECOS_PROVISORIOS, SERVICOS
+from servicos import BLOCOS, FAQ_BUSCA, PORTES, PRECOS_PROVISORIOS, SERVICOS, VIDEOS_HOME
 
 RAIZ = config.RAIZ
 D = config.DOMINIO
@@ -365,7 +365,6 @@ def gerar_lista():
       <nav class="crumbs" aria-label="Você está aqui"><a href="../">Home</a> <span aria-hidden="true">/</span> <span>Serviços</span></nav>
       <h1>Serviços de estética automotiva em {cidade}</h1>
       <p class="lhero__lead">Lavagem, polimento, vitrificação e higienização. Escolha o porte e veja o valor.</p>
-      {busca}
     </div>
   </section>
 
@@ -381,6 +380,10 @@ def gerar_lista():
       <h2>Dúvidas frequentes</h2>
       {faq}
     </div>
+  </section>
+
+  <section class="section section--tight bg-paper section--busca">
+    <div class="wrap">{busca}</div>
   </section>
 
   {cta}
@@ -409,12 +412,24 @@ def item_galeria(B, arquivo, alt, i):
             % pic(B, arquivo, alt, '(min-width:900px) 300px, 62vw'))
 
 
-def item_video(B, slug, nome):
+VIDEOS = os.path.join(RAIZ, 'assets', 'video')
+
+
+def item_video(B, clipe, descricao, legenda='Vídeo · sem som', link=None):
+    """Vídeo curto no carrossel. A proporção vem da capa gerada junto com o
+    clipe (gerar-clipes.py): vertical, ou horizontal quando o trecho foi
+    recortado — nada é esticado nem cortado na tela."""
+    if not os.path.exists(os.path.join(VIDEOS, clipe + '.mp4')):
+        sys.exit('Vídeo assets/video/%s.mp4 não existe (rode gerar-clipes.py)' % clipe)
+    with Image.open(os.path.join(VIDEOS, clipe + '.jpg')) as im:
+        w, h = im.size
+    rotulo = ('<a href="%s">%s</a>' % (link, ESC(legenda))) if link else ESC(legenda)
     return ('<figure class="carrossel__item carrossel__item--video">'
-            '<video class="clipe" muted loop playsinline preload="none" width="540" height="960" '
-            'poster="{B}assets/video/{slug}.jpg" data-src="{B}assets/video/{slug}.mp4" '
-            'aria-label="Vídeo curto do trabalho de {nome} na GHR, sem som"></video>'
-            '<figcaption>Vídeo · sem som</figcaption></figure>').format(B=B, slug=slug, nome=ESC(nome))
+            '<video class="clipe" muted loop playsinline preload="none" width="{w}" height="{h}" '
+            'poster="{B}assets/video/{c}.jpg" data-src="{B}assets/video/{c}.mp4" '
+            'aria-label="{d}"></video>'
+            '<figcaption>{rot}</figcaption></figure>').format(
+                B=B, c=clipe, w=w, h=h, d=ESC(descricao), rot=rotulo)
 
 
 def gerar_servico(s):
@@ -425,8 +440,8 @@ def gerar_servico(s):
     outros.sort(key=lambda o: o['bloco'] != s['bloco'])
 
     galeria = []
-    if s.get('video'):
-        galeria.append(item_video(B, s['video'], nome))
+    for clipe in s.get('videos', []):
+        galeria.append(item_video(B, clipe, 'Vídeo curto de %s na GHR, sem som' % nome))
     galeria += [item_galeria(B, a, alt, i) for i, (a, alt) in enumerate(s['galeria'])]
 
     passos = ''.join(
@@ -545,6 +560,40 @@ def atualizar_ld_paginas():
             grava(caminho, novo)
 
 
+# ------------------------------------------- faixa de vídeos da home
+def atualizar_videos_home():
+    """Escreve a faixa "Vídeos do box" em index.html, entre os marcadores
+    <!-- videos:home --> e <!-- /videos:home -->. Lista em VIDEOS_HOME."""
+    itens = [item_video('', c, legenda + ' — vídeo curto da GHR, sem som', legenda,
+                        ('servicos/%s/' % slug) if slug else None)
+             for c, legenda, slug in VIDEOS_HOME]
+    bloco = '''<!-- videos:home -->
+  <!-- GERADO por ferramentas/gerar-paginas-servicos.py (VIDEOS_HOME em servicos.py) -->
+  <section class="section section--tight bg-dark section--videos" aria-labelledby="videos-titulo">
+    <div class="wrap">
+      <span class="eyebrow">Vídeos</span>
+      <h2 id="videos-titulo" style="margin-top:1.1rem">Direto do box da GHR.</h2>
+      <p class="sec-dica">Arraste para o lado</p>
+    </div>
+    <div class="carrossel carrossel--videos" tabindex="0" aria-label="Vídeos curtos de trabalhos da GHR">
+      %s
+    </div>
+  </section>
+  <!-- /videos:home -->''' % '\n      '.join(itens)
+    caminho = os.path.join(RAIZ, 'index.html')
+    texto = open(caminho, encoding='utf-8').read()
+    if '<!-- videos:home -->' in texto:
+        novo = re.sub(r'<!-- videos:home -->.*?<!-- /videos:home -->', lambda m: bloco, texto, flags=re.S)
+    else:
+        # primeira vez: entra logo depois da seção de serviços
+        marca = '<!-- ================== SEÇÃO COM ROLAGEM (STICKY) =================== -->'
+        if marca not in texto:
+            sys.exit('index.html: não achei onde pôr a faixa de vídeos')
+        novo = texto.replace(marca, bloco + '\n\n  ' + marca, 1)
+    if novo != texto:
+        grava(caminho, novo)
+
+
 # --------------------------------------------- assets/js/data/services.js
 def gerar_js():
     itens = []
@@ -597,6 +646,7 @@ def main():
         gerar_servico(s)
     gerar_js()
     atualizar_ld_paginas()
+    atualizar_videos_home()
     if PRECOS_PROVISORIOS:
         print('\nATENÇÃO: preços de EXEMPLO (PRECOS_PROVISORIOS = True em servicos.py).')
 

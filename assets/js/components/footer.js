@@ -68,7 +68,12 @@ GHR.initFooter = function () {
     <a class="wa-float" data-wa-float href="${GHR.waLink()}"
        target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
       ${GHR.icon('wa', 26)}
-    </a>`;
+    </a>
+
+    <button type="button" class="topo-float" data-topo-float aria-label="Voltar ao topo da página">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
+    </button>`;
 
   const ano = document.querySelector('[data-ano]');
   if (ano) ano.textContent = new Date().getFullYear();
@@ -79,6 +84,21 @@ GHR.initFooter = function () {
     const show = () => float.classList.toggle('is-visible', window.scrollY > 520);
     window.addEventListener('scroll', show, { passive: true });
     show();
+  }
+
+  /* "voltar ao topo": aparece depois de rolar mais ou menos uma tela e meia */
+  const topo = document.querySelector('[data-topo-float]');
+  if (topo) {
+    const mostrar = () => topo.classList.toggle('is-visible', window.scrollY > window.innerHeight * 1.5);
+    window.addEventListener('scroll', mostrar, { passive: true });
+    mostrar();
+    topo.addEventListener('click', () => {
+      const reduzir = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduzir ? 'auto' : 'smooth' });
+      /* quem navega por teclado continua do topo: foco no primeiro link do header */
+      const alvo = document.querySelector('[data-hdr] a');
+      if (alvo) alvo.focus({ preventScroll: true });
+    });
   }
 
   GHR.injectSchema();

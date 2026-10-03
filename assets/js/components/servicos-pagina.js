@@ -53,7 +53,10 @@ GHR.initClipes = function () {
     if (!v.src) v.src = v.dataset.src;
     if (reduzir) { v.controls = true; return; }
     const p = v.play();
-    if (p && p.catch) p.catch(() => { v.controls = true; });
+    /* AbortError = o play foi interrompido por um pause (rolagem rápida): o
+       observador tenta de novo quando o vídeo voltar à tela. Só um bloqueio
+       real de autoplay (NotAllowedError, modo economia) mostra os controles. */
+    if (p && p.catch) p.catch(e => { if (e && e.name === 'NotAllowedError') v.controls = true; });
   };
 
   if (!('IntersectionObserver' in window)) { videos.forEach(v => { v.controls = true; v.src = v.dataset.src; }); return; }

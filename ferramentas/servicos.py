@@ -20,7 +20,7 @@ FOTOS
     capa     recorte 4:5 (ghr-vNN-q.jpg) do cenário novo — card e topo da página
     galeria  carrossel: quadros 9:16 do cenário novo + closes antigos onde o
              ambiente não aparece. Cada item: (arquivo, alt).
-    video    trecho curto (2025/2026), sem som — ver CLIPES em gerar-clipes.py
+    videos   trechos curtos (2025/2026), sem som — nomes de CLIPES em gerar-clipes.py
 
 TEXTOS marcados  # CONFIRMAR  dependem de informação da empresa.
 """
@@ -34,6 +34,18 @@ BLOCOS = [
     ('protecao', 'Proteção'),
     ('interior', 'Interior'),
     ('detalhes', 'Detalhes'),
+]
+
+# Faixa "Vídeos do box" na home: (clipe, legenda, serviço do link ou None)
+VIDEOS_HOME = [
+    ('polimento-tecnico', 'Polimento técnico', 'polimento-tecnico'),
+    ('espelhamento',      'Brilho espelhado sob o LED', 'espelhamento'),
+    ('higienizacao',      'Interior higienizado', 'higienizacao'),
+    ('vitrificacao',      'SUV pronto no box', 'vitrificacao'),
+    ('cristalizacao',     'Pintura cristalizada', 'cristalizacao'),
+    ('lavagem-detalhada', 'Moto limpa no cavalete', 'lavagem-detalhada'),
+    ('limpeza-chassi',    'Chassi limpo na rampa', None),
+    ('limpeza-motor',     'Motor limpo', None),
 ]
 
 PORTES = [('P', 'Pequeno'), ('M', 'Médio'), ('G', 'Grande')]
@@ -97,7 +109,7 @@ SERVICOS = [
             ('ghr-v21.jpg', 'Porta aberta com forro e soleira limpos'),
             ('ghr-v08.jpg', 'Moto azul limpa no cavalete, no box da GHR'),
         ],
-        'video': 'lavagem-detalhada',
+        'videos': ['lavagem-detalhada'],
         'faq': [
             ('Atende moto?', 'Sim, a GHR também faz a limpeza detalhada de motos.'),
             ('Inclui o interior?', 'Inclui acabamentos internos de porta e soleira. Para '
@@ -132,7 +144,7 @@ SERVICOS = [
             ('ghr-205.jpg', 'Antes e depois do polimento: riscos sumindo da pintura'),
             ('ghr-210.jpg', 'Antes e depois do polimento em pintura clara'),
         ],
-        'video': 'polimento-tecnico',
+        'videos': ['polimento-tecnico'],
         'faq': [
             ('Polimento tira todo risco?', 'Tira riscos finos, marcas de lavagem e opacidade. '
              'Risco que passou do verniz não sai só com polimento — isso é avaliado antes.'),
@@ -168,7 +180,7 @@ SERVICOS = [
             ('ghr-211.jpg', 'Antes e depois do refino da pintura'),
             ('ghr-090.jpg', 'Antes e depois: reflexo da luz na pintura'),
         ],
-        'video': 'espelhamento',
+        'videos': ['espelhamento'],
         'faq': [
             ('Qual a diferença para o polimento técnico?', 'O polimento corrige. O '
              'espelhamento é o refino depois da correção, para o brilho máximo.'),
@@ -192,6 +204,7 @@ SERVICOS = [
             ('Preparo', 'Pintura limpa e descontaminada.', None),
             ('Aplicação', 'Produto aplicado painel por painel.', None),
         ],
+        'videos': ['cristalizacao'],
         'capa': 'ghr-v12-q.jpg',
         'capa_alt': 'Capô de sedã azul brilhando após cristalização na GHR Estética Automotiva',
         'galeria': [
@@ -231,7 +244,7 @@ SERVICOS = [
             ('ghr-v15.jpg', 'Lateral de sedã azul com reflexo limpo na pintura'),
             ('ghr-093.jpg', 'Antes e depois: reflexo da luz no capô branco'),
         ],
-        'video': 'vitrificacao',
+        'videos': ['vitrificacao'],
         'faq': [
             ('Quanto tempo dura a vitrificação?', 'Bem mais que cera ou cristalização. A '
              'duração depende do produto, do uso e da manutenção — informada no orçamento.'),  # CONFIRMAR
@@ -257,6 +270,7 @@ SERVICOS = [
             ('Limpeza profunda', 'Produto certo para cada material.', None),
             ('Acabamento', 'Portas, painel e console revisados.', None),
         ],
+        'videos': ['higienizacao'],
         'capa': 'ghr-v22-q.jpg',
         'capa_alt': 'Banco de couro limpo após higienização interna na GHR Estética Automotiva',
         'galeria': [
