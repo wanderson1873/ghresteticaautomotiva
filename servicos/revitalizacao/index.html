@@ -3,40 +3,215 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!-- medicao:head -->
 <script>
-/* Marca que o JavaScript esta vivo. O CSS so esconde conteudo para animar
-   dentro de `.js` — sem esta linha (script bloqueado, erro de rede, navegador
-   antigo) o site aparece inteiro, estatico, em vez de ficar em branco. */
-document.documentElement.className += ' js';
+  // Medição liberada desde o primeiro carregamento, sem aviso de cookies (LGPD:
+  // legítimo interesse, explicado em /privacidade/). Fica desligada só se o
+  // visitante tocou em "Parar de medir este aparelho".
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  try { window.ghrMedicaoParada = localStorage.getItem('ghr-medicao') === 'parado'; } catch (e) {}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: window.ghrMedicaoParada ? 'denied' : 'granted'
+  });
+  window.GHR_CLARITY = '';
 </script>
+<!-- /medicao:head -->
+<script>document.documentElement.className += ' js';</script>
 
-<!-- Título e descrição também são atualizados por services.js em tempo de
-     execução: editar o serviço lá reflete aqui automaticamente. -->
+<!-- Página GERADA por ferramentas/gerar-paginas-servicos.py a partir de
+     ferramentas/servicos.py. Edite lá e rode o script; mudanças feitas aqui
+     somem na próxima geração. -->
 <title>Revitalização em Coronel Fabriciano | GHR Estética Automotiva</title>
-<meta name="description" content="Recuperação de plásticos, faróis e acabamentos desgastados pelo tempo.">
+<meta name="description" content="Revitalização de faróis e plásticos em Coronel Fabriciano: farol amarelado volta a ficar transparente e plástico ressecado recupera a cor.">
 <link rel="canonical" href="https://ghresteticaautomotiva.com.br/servicos/revitalizacao/">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="geo.region" content="BR-MG">
+<meta name="geo.placename" content="Coronel Fabriciano">
 <meta name="theme-color" content="#07090c">
 <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="GHR Estética Automotiva">
 <meta property="og:title" content="Revitalização em Coronel Fabriciano | GHR Estética Automotiva">
-<meta property="og:description" content="Recuperação de plásticos, faróis e acabamentos desgastados pelo tempo.">
+<meta property="og:description" content="Revitalização de faróis e plásticos em Coronel Fabriciano: farol amarelado volta a ficar transparente e plástico ressecado recupera a cor.">
 <meta property="og:url" content="https://ghresteticaautomotiva.com.br/servicos/revitalizacao/">
-<meta property="og:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-148.jpg">
+<meta property="og:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v03-q.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Revitalização em Coronel Fabriciano | GHR Estética Automotiva">
-<meta name="twitter:description" content="Recuperação de plásticos, faróis e acabamentos desgastados pelo tempo.">
-<meta name="twitter:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-148.jpg">
+<meta name="twitter:description" content="Revitalização de faróis e plásticos em Coronel Fabriciano: farol amarelado volta a ficar transparente e plástico ressecado recupera a cor.">
+<meta name="twitter:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v03-q.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../../assets/css/style.css?v=21">
-<link rel="preload" as="image" type="image/webp" href="../../assets/img/gallery/w1440/ghr-148.webp" fetchpriority="high">
+<link rel="stylesheet" href="../../assets/css/style.css?v=22">
+<link rel="preload" as="image" type="image/webp" href="../../assets/img/gallery/w1440/ghr-v03-q.webp" fetchpriority="high">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "AutoWash",
+   "@id": "https://ghresteticaautomotiva.com.br/#negocio",
+   "name": "GHR Estética Automotiva",
+   "url": "https://ghresteticaautomotiva.com.br/",
+   "telephone": "+5531986926513",
+   "image": "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v18-q.jpg",
+   "logo": "https://ghresteticaautomotiva.com.br/assets/img/logo.svg",
+   "priceRange": "$$",
+   "paymentAccepted": "Cartão de crédito, Pix, Dinheiro",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Caiapós, 143 - Caladinho de Cima",
+    "addressLocality": "Coronel Fabriciano",
+    "addressRegion": "MG",
+    "postalCode": "35171-270",
+    "addressCountry": "BR"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Coronel Fabriciano"
+    },
+    {
+     "@type": "City",
+     "name": "Ipatinga"
+    },
+    {
+     "@type": "City",
+     "name": "Timóteo"
+    },
+    {
+     "@type": "City",
+     "name": "Santana do Paraíso"
+    }
+   ],
+   "hasMap": "https://www.google.com/maps/search/?api=1&query=GHR%20Est%C3%A9tica%20Automotiva%20Rua%20Caiap%C3%B3s%2C%20143%2C%20Coronel%20Fabriciano&query_place_id=ChIJKa8uwZhVpQARZctH1gXoe_E",
+   "sameAs": [
+    "https://www.instagram.com/ghr_esteticaautomotiva/"
+   ],
+   "openingHoursSpecification": [
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+     ],
+     "opens": "08:00",
+     "closes": "18:00"
+    }
+   ],
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -19.5053841,
+    "longitude": -42.5976822
+   }
+  },
+  {
+   "@type": "Service",
+   "@id": "https://ghresteticaautomotiva.com.br/servicos/revitalizacao/#servico",
+   "name": "Revitalização",
+   "serviceType": "Revitalização",
+   "description": "Revitalização de faróis e plásticos em Coronel Fabriciano: farol amarelado volta a ficar transparente e plástico ressecado recupera a cor.",
+   "url": "https://ghresteticaautomotiva.com.br/servicos/revitalizacao/",
+   "image": [
+    "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v03-q.jpg",
+    "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v03.jpg",
+    "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-107.jpg",
+    "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-134.jpg"
+   ],
+   "provider": {
+    "@id": "https://ghresteticaautomotiva.com.br/#negocio"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Coronel Fabriciano"
+    },
+    {
+     "@type": "City",
+     "name": "Ipatinga"
+    },
+    {
+     "@type": "City",
+     "name": "Timóteo"
+    },
+    {
+     "@type": "City",
+     "name": "Santana do Paraíso"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://ghresteticaautomotiva.com.br/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Serviços",
+     "item": "https://ghresteticaautomotiva.com.br/servicos/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Revitalização",
+     "item": "https://ghresteticaautomotiva.com.br/servicos/revitalizacao/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Farol amarelado tem jeito?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Na maioria dos casos sim: a lente é lixada, polida e recebe proteção. Farol trincado ou com umidade por dentro não se resolve assim."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Volta a amarelar?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Com o tempo e o sol, sim. A proteção aplicada no final atrasa esse processo."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Faz só um farol?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pergunte no WhatsApp."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Vocês buscam o carro?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sim. A GHR busca e entrega o veículo em todo o Vale do Aço — Coronel Fabriciano, Ipatinga, Timóteo e Santana do Paraíso. Dependendo da distância pode haver uma taxa, informada junto com o orçamento."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 
 <body data-page="servicos">
@@ -44,16 +219,14 @@ document.documentElement.className += ' js';
 <div class="progress" data-progress></div>
 
 <noscript>
-  <!-- Header, rodape e menu sao montados por JavaScript. Com o script
-       desligado, esta e a navegacao do site: links reais, endereco e WhatsApp. -->
-  <nav class="noscript-nav" aria-label="Navegacao sem JavaScript">
+  <nav class="noscript-nav" aria-label="Navegação sem JavaScript">
     <a href="../../">Home</a>
-    <a href="../../servicos/">Servicos</a>
+    <a href="../../servicos/">Serviços</a>
     <a href="../../fotos/">Fotos</a>
     <a href="../../parcerias/">Parcerias</a>
     <a href="../../contato/">Contato</a>
     <a href="https://wa.me/5531986926513" target="_blank" rel="noopener"><strong>Falar no WhatsApp</strong></a>
-    <span>GHR Estetica Automotiva &middot; Coronel Fabriciano</span>
+    <span>GHR Estética Automotiva &middot; Rua Caiapós, 143, Caladinho de Cima &middot; Coronel Fabriciano - MG &middot; (31) 98692-6513</span>
   </nav>
 </noscript>
 
@@ -61,58 +234,163 @@ document.documentElement.className += ' js';
 
 <main id="conteudo">
 
-  <section class="phero">
-    <div class="phero__bg">
-      <picture>
-        <source data-svc-src type="image/webp" srcset="../../assets/img/gallery/w1440/ghr-148.webp 1440w">
-        <img data-svc-bg src="../../assets/img/gallery/ghr-148.jpg" alt="" fetchpriority="high" width="1440" height="1440">
-      </picture>
-    </div>
-    <div class="wrap">
-      <nav class="crumbs" aria-label="Você está aqui">
+  <section class="shero">
+    <div class="wrap shero__grade">
+      <nav class="crumbs shero__crumbs" aria-label="Você está aqui">
         <a href="../../">Home</a> <span aria-hidden="true">/</span>
         <a href="../../servicos/">Serviços</a> <span aria-hidden="true">/</span>
         <span>Revitalização</span>
       </nav>
-      <span class="eyebrow" data-svc-cat>Detalhes</span>
-      <h1 style="margin-top:1.1rem" data-svc-titulo>Revitalização</h1>
-      <p class="lead" data-svc-resumo>Recuperação de plásticos, faróis e acabamentos desgastados pelo tempo.</p>
-    </div>
-  </section>
-
-  <section class="section bg-paper">
-    <div class="wrap">
-      <!-- Conteúdo montado a partir de assets/js/data/services.js -->
-      <div data-c="service-detail" data-servico="revitalizacao"></div>
-    </div>
-  </section>
-
-  <section class="section section--tight bg-paper" style="padding-top:0">
-    <div class="wrap">
-      <div class="cta" data-reveal>
-        <div class="cta__body">
-          <h2>Seu carro merece esse cuidado.</h2>
-          <p>Fale com a equipe e combine o melhor horário para o seu veículo.</p>
-          <div class="cta__actions">
-            <a class="btn btn--lg btn--wa" data-wa data-msg="Olá! Vim pelo site da GHR e tenho interesse em Revitalização."
-               href="https://wa.me/5531986926513?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GHR%20e%20tenho%20interesse%20em%20Revitaliza%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar no WhatsApp</a>
-            <a class="btn btn--lg btn--ghost" href="../../servicos/">Ver todos os serviços</a>
-          </div>
-        </div>
-        <div class="cta__media">
-          <picture>
-            <source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-208.webp 720w, ../../assets/img/gallery/w1440/ghr-208.webp 1440w" sizes="(max-width:900px) 100vw, 45vw">
-            <img src="../../assets/img/gallery/ghr-208.jpg" alt="Veículo finalizado na GHR Estética Automotiva" loading="lazy" width="1440" height="1440">
-          </picture>
-        </div>
+      <div class="shero__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v03-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v03-q.webp 1440w" sizes="(min-width:900px) 520px, 100vw"><img src="../../assets/img/gallery/ghr-v03-q.jpg" alt="Farol de hatch branco transparente após revitalização na GHR Estética Automotiva" width="1440" height="1800" fetchpriority="high" decoding="async"></picture></div>
+      <div class="shero__texto">
+        <span class="shero__bloco">Detalhes</span>
+        <h1>Revitalização em Coronel Fabriciano</h1>
+        <p class="shero__curto">Faróis, plásticos e frisos com cara de novos.</p>
+        <div class="pmg"><ul class="pmg__lista" aria-label="Preço por porte do veículo"><li><span>Pequeno</span><b>R$ 150</b></li><li><span>Médio</span><b>R$ 150</b></li><li><span>Grande</span><b>R$ 180</b></li></ul><span class="tarja-exemplo">valor de exemplo</span></div>
+        <a class="btn btn--lg btn--wa shero__btn" href="https://wa.me/5531986926513?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GHR%20e%20tenho%20interesse%20em%20Revitaliza%C3%A7%C3%A3o.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Pedir orçamento</a>
+        <p class="busca-entrega"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16v-3l2-4h10l2 4v3"/><path d="M3.5 16h17"/><circle cx="7" cy="17.6" r="1.3"/><circle cx="17" cy="17.6" r="1.3"/></svg><span><b>Buscamos e entregamos</b> em todo o Vale do Aço. Taxa conforme a distância.</span></p>
       </div>
     </div>
   </section>
+
+  <section class="section section--tight bg-paper">
+    <div class="wrap">
+      <h2 class="sec-titulo">O que está incluso</h2>
+      <ul class="inclui"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Faróis e lanternas</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Plásticos externos</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Frisos e grades</li></ul>
+    </div>
+  </section>
+
+  <section class="section section--tight bg-paper section--galeria">
+    <div class="wrap">
+      <h2 class="sec-titulo">Trabalhos na GHR</h2>
+      <p class="sec-dica">Arraste para o lado</p>
+    </div>
+    <div class="carrossel" tabindex="0" aria-label="Fotos de Revitalização na GHR">
+      <figure class="carrossel__item"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v03.webp 720w" sizes="(min-width:900px) 300px, 62vw"><img src="../../assets/img/gallery/ghr-v03.jpg" alt="Farol de hatch branco limpo e transparente, no box da GHR" width="1440" height="2560" loading="lazy" decoding="async"></picture></figure>
+      <figure class="carrossel__item"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-107.webp 720w" sizes="(min-width:900px) 300px, 62vw"><img src="../../assets/img/gallery/ghr-107.jpg" alt="Antes e depois da revitalização de faróis" width="1440" height="1440" loading="lazy" decoding="async"></picture></figure>
+      <figure class="carrossel__item"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-134.webp 720w" sizes="(min-width:900px) 300px, 62vw"><img src="../../assets/img/gallery/ghr-134.jpg" alt="Antes e depois: farol amarelado e farol recuperado" width="1241" height="1241" loading="lazy" decoding="async"></picture></figure>
+      <figure class="carrossel__item"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-151.webp 720w" sizes="(min-width:900px) 300px, 62vw"><img src="../../assets/img/gallery/ghr-151.jpg" alt="Antes e depois da revitalização de frisos e plásticos" width="1440" height="1440" loading="lazy" decoding="async"></picture></figure>
+    </div>
+  </section>
+
+  <section class="section section--tight bg-soft">
+    <div class="wrap">
+      <h2 class="sec-titulo">Como funciona</h2>
+      <ol class="passos"><li class="passos__item"><div><h3>Farol</h3><p>Lixamento, polimento e proteção da lente.</p></div></li><li class="passos__item"><div><h3>Plásticos</h3><p>Recuperação da cor de frisos e para-choques.</p></div></li></ol>
+    </div>
+  </section>
+
+  <section class="section section--tight bg-paper">
+    <div class="wrap wrap--estreito">
+      <h2 class="sec-titulo">Dúvidas sobre revitalização</h2>
+      <div class="faq"><details class="faq__item"><summary>Farol amarelado tem jeito?</summary><p>Na maioria dos casos sim: a lente é lixada, polida e recebe proteção. Farol trincado ou com umidade por dentro não se resolve assim.</p></details><details class="faq__item"><summary>Volta a amarelar?</summary><p>Com o tempo e o sol, sim. A proteção aplicada no final atrasa esse processo.</p></details><details class="faq__item"><summary>Faz só um farol?</summary><p>Pergunte no WhatsApp.</p></details><details class="faq__item"><summary>Vocês buscam o carro?</summary><p>Sim. A GHR busca e entrega o veículo em todo o Vale do Aço — Coronel Fabriciano, Ipatinga, Timóteo e Santana do Paraíso. Dependendo da distância pode haver uma taxa, informada junto com o orçamento.</p></details></div>
+    </div>
+  </section>
+
+  <section class="section section--tight bg-soft">
+    <div class="wrap">
+      <h2 class="sec-titulo">Outros serviços</h2>
+    </div>
+    <div class="carrossel carrossel--cards"><article class="scard">
+  <a class="scard__link" href="../../servicos/lavagem-tradicional/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v16-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v16-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v16-q.jpg" alt="SUV azul limpo no box da GHR Estética Automotiva, em Coronel Fabriciano" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Lavagem</span>
+      <h3 class="scard__nome">Lavagem Tradicional</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 50" data-m="R$ 60" data-g="R$ 70">R$ 50</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Lavagem externa caprichada para o dia a dia.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article><article class="scard">
+  <a class="scard__link" href="../../servicos/lavagem-detalhada/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v18-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v18-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v18-q.jpg" alt="SUV preto limpo e brilhando sob as luzes de LED da GHR Estética Automotiva" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Lavagem</span>
+      <h3 class="scard__nome">Lavagem Detalhada</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 120" data-m="R$ 150" data-g="R$ 180">R$ 120</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Limpeza ponto a ponto, onde a lavagem comum não chega.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article><article class="scard">
+  <a class="scard__link" href="../../servicos/polimento-tecnico/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v10-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v10-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v10-q.jpg" alt="Sedã preto polido refletindo as luzes de LED da GHR Estética Automotiva" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Pintura</span>
+      <h3 class="scard__nome">Polimento Técnico</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 450" data-m="R$ 550" data-g="R$ 650">R$ 450</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Tira riscos finos, marcas de lavagem e opacidade.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article><article class="scard">
+  <a class="scard__link" href="../../servicos/espelhamento/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v11-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v11-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v11-q.jpg" alt="Capô azul-escuro espelhado refletindo as luzes de LED da GHR Estética Automotiva" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Pintura</span>
+      <h3 class="scard__nome">Espelhamento</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 600" data-m="R$ 700" data-g="R$ 800">R$ 600</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Brilho máximo, com reflexo de espelho.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article><article class="scard">
+  <a class="scard__link" href="../../servicos/cristalizacao/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v12-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v12-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v12-q.jpg" alt="Capô de sedã azul brilhando após cristalização na GHR Estética Automotiva" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Proteção</span>
+      <h3 class="scard__nome">Cristalização</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 250" data-m="R$ 300" data-g="R$ 350">R$ 250</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Realça o brilho e facilita a limpeza.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article><article class="scard">
+  <a class="scard__link" href="../../servicos/vitrificacao/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v19-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v19-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v19-q.jpg" alt="SUV preto vitrificado brilhando sob as luzes de LED da GHR Estética Automotiva" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Proteção</span>
+      <h3 class="scard__nome">Vitrificação</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 900" data-m="R$ 1.100" data-g="R$ 1.300">R$ 900</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Proteção de longa duração, a água escorre.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article><article class="scard">
+  <a class="scard__link" href="../../servicos/higienizacao/">
+    <div class="scard__foto"><picture><source type="image/webp" srcset="../../assets/img/gallery/w720/ghr-v22-q.webp 720w, ../../assets/img/gallery/w1440/ghr-v22-q.webp 1440w" sizes="(min-width:1100px) 400px, (min-width:700px) 46vw, 92vw"><img src="../../assets/img/gallery/ghr-v22-q.jpg" alt="Banco de couro limpo após higienização interna na GHR Estética Automotiva" width="1440" height="1800" loading="lazy" decoding="async"></picture></div>
+    <div class="scard__corpo">
+      <span class="scard__bloco">Interior</span>
+      <h3 class="scard__nome">Higienização</h3>
+      <p class="scard__preco"><span class="scard__porte" data-porte-rotulo>Pequeno</span> <b data-preco data-p="R$ 250" data-m="R$ 300" data-g="R$ 350">R$ 250</b><span class="tarja-exemplo">valor de exemplo</span></p>
+      <p class="scard__curto">Bancos, carpete, teto e painel limpos de verdade.</p>
+      <span class="scard__mais">Ver detalhes <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+</article></div>
+  </section>
+
+  <section class="section section--tight bg-paper">
+  <div class="wrap">
+    <div class="cta-ghr">
+      <h2>Quer revitalização no seu carro?</h2>
+      <p>Mande o modelo no WhatsApp e receba o valor e o prazo.</p>
+      <div class="cta-ghr__acoes">
+        <a class="btn btn--lg btn--wa" href="https://wa.me/5531986926513?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GHR%20e%20tenho%20interesse%20em%20Revitaliza%C3%A7%C3%A3o.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Falar no WhatsApp</a>
+        <a class="btn btn--lg btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=GHR%20Est%C3%A9tica%20Automotiva%20Rua%20Caiap%C3%B3s%2C%20143%2C%20Coronel%20Fabriciano&amp;query_place_id=ChIJKa8uwZhVpQARZctH1gXoe_E" target="_blank" rel="noopener">Como chegar</a>
+      </div>
+      <p class="cta-ghr__end">Rua Caiapós, 143 – Caladinho de Cima, Coronel Fabriciano - MG</p>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <div data-c="footer"></div>
 
-<script src="../../assets/js/site.js?v=21"></script>
+<script src="../../assets/js/site.js?v=22"></script>
+<!-- medicao:body -->
+<!-- /medicao:body -->
 </body>
 </html>

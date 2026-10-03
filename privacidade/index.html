@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-base="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- medicao:head -->
+<script>
+  // Medição liberada desde o primeiro carregamento, sem aviso de cookies (LGPD:
+  // legítimo interesse, explicado em /privacidade/). Fica desligada só se o
+  // visitante tocou em "Parar de medir este aparelho".
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  try { window.ghrMedicaoParada = localStorage.getItem('ghr-medicao') === 'parado'; } catch (e) {}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: window.ghrMedicaoParada ? 'denied' : 'granted'
+  });
+  window.GHR_CLARITY = '';
+</script>
+<!-- /medicao:head -->
+<script>document.documentElement.className += ' js';</script>
+
+<title>Privacidade | GHR Estética Automotiva</title>
+<meta name="description" content="O que o site da GHR Estética Automotiva mede, por que mede e como você decide sobre isso.">
+<link rel="canonical" href="https://ghresteticaautomotiva.com.br/privacidade/">
+<!-- página institucional: fica fora da busca e do sitemap -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#07090c">
+<link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css?v=22">
+<style>
+  .politica h2{ font-size:1.25rem; margin-top:2.2rem; }
+  .politica p, .politica li{ color:var(--fg-2); }
+  .politica p{ margin-top:.7rem; }
+  .politica ul{ margin:.7rem 0 0; padding-left:1.2rem; display:grid; gap:.4rem; }
+  .politica .btn{ margin-top:1rem; }
+  .politica__data{ font-size:.88rem; }
+</style>
+</head>
+
+<body data-page="privacidade">
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<noscript>
+  <nav class="noscript-nav" aria-label="Navegação sem JavaScript">
+    <a href="../">Home</a>
+    <a href="../servicos/">Serviços</a>
+    <a href="../fotos/">Fotos</a>
+    <a href="../parcerias/">Parcerias</a>
+    <a href="../contato/">Contato</a>
+    <a href="https://wa.me/5531986926513" target="_blank" rel="noopener"><strong>Falar no WhatsApp</strong></a>
+  </nav>
+</noscript>
+
+<div data-c="header"></div>
+
+<main id="conteudo">
+
+  <section class="lhero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Você está aqui"><a href="../">Home</a> <span aria-hidden="true">/</span> <span>Privacidade</span></nav>
+      <h1>Política de privacidade</h1>
+      <p class="lhero__lead">O que este site mede, por que mede e como você decide sobre isso.</p>
+    </div>
+  </section>
+
+  <section class="section bg-paper">
+    <div class="wrap wrap--estreito politica">
+      <p class="politica__data">Atualizada em 2 de outubro de 2026.</p>
+
+      <h2>Quem é o responsável</h2>
+      <p>Este site é da GHR Estética Automotiva, Rua Caiapós, 143 – Caladinho de Cima,
+        Coronel Fabriciano - MG, 35171-270. Para qualquer assunto sobre os seus dados, fale com a
+        gente pelo WhatsApp (31) 98692-6513.</p>
+
+      <h2>O que o site não coleta</h2>
+      <p>O site não tem cadastro, login nem área de cliente, e não vendemos nem repassamos dados.
+        O formulário da página de contato não envia nada para nós: ele só monta a mensagem e abre
+        o WhatsApp, onde você decide se envia.</p>
+
+      <h2>Google Analytics</h2>
+      <p>Usamos o Google Analytics para saber quantas pessoas visitam o site, de onde chegam, quais
+        páginas veem e em quais botões tocam — por exemplo, quantas vezes alguém tocou em "Falar no
+        WhatsApp". Serve para melhorar o site, não para identificar você.</p>
+      <ul>
+        <li>Ele grava cookies com um código aleatório, para reconhecer o mesmo aparelho entre visitas. O código não tem seu nome nem telefone.</li>
+        <li>Os recursos de publicidade e remarketing do Google ficam desligados.</li>
+        <li>Os dados ficam com o Google, conforme a política de privacidade do Google.</li>
+      </ul>
+
+      <h2>Microsoft Clarity</h2>
+      <p>O Clarity mostra como as páginas são usadas: até onde as pessoas rolam, onde tocam e onde
+        desistem. Serve para consertar o que atrapalha, como um botão escondido ou um preço difícil
+        de achar.</p>
+      <ul>
+        <li>Grava a navegação na página (movimento, toques e rolagem) — não a câmera, o microfone nem a tela do aparelho.</li>
+        <li>O que é digitado nos campos do formulário fica mascarado nas gravações.</li>
+        <li>Os dados ficam com a Microsoft, conforme a política de privacidade da Microsoft.</li>
+      </ul>
+
+      <h2>Por que medimos sem pedir antes</h2>
+      <p>O Google Analytics e o Clarity começam a funcionar quando a página abre, sem aviso de
+        cookies. A base legal é o legítimo interesse da GHR em entender como o site é usado
+        (art. 7º, IX, da LGPD): são só dados de navegação, que não identificam você e não são usados
+        para anúncios. Se preferir não ser medido, toque no botão abaixo.</p>
+      <button type="button" class="btn btn--ghost" data-medicao-parar>Parar de medir este aparelho</button>
+      <p>Isso desliga o Google Analytics e o Clarity neste navegador, agora e nas próximas visitas.
+        A escolha fica guardada no próprio navegador (chave <code>ghr-medicao</code>) e não é
+        enviada a lugar nenhum. O contador próprio, explicado abaixo, tem um botão só dele.</p>
+
+      <h2>Google Tag Manager</h2>
+      <p>As ferramentas acima são carregadas pelo Google Tag Manager, que não grava cookie nem
+        identifica ninguém: ele só organiza o que é carregado e quando — e deixa de ser carregado se
+        você pedir para parar de medir.</p>
+
+      <h2>Contador de visitas próprio (sem cookie)</h2>
+      <p>O site também tem um contador simples, para a GHR saber quantas pessoas viram o site, de
+        onde chegaram e quantas tocaram em WhatsApp, telefone ou "Como chegar".</p>
+      <ul>
+        <li>Não usa cookie. Guarda no navegador só um código aleatório (chaves <code>ptg_v</code> e <code>ptg_s</code>), para a mesma visita não ser contada duas vezes.</li>
+        <li>Registra a página vista, de onde você veio, os botões tocados, o tipo de aparelho e navegador, o tamanho da tela, o idioma, até onde a página foi rolada, o tempo nela e a cidade aproximada.</li>
+        <li>Não grava o endereço IP nem o que você digita. A cidade aproximada vem da rede de entrega do site no momento da visita, e o IP é descartado.</li>
+        <li>Os registros ficam 13 meses em servidores no Brasil (São Paulo). Depois disso só sobram totais por dia, sem código de visitante.</li>
+      </ul>
+      <button type="button" class="btn btn--ghost" data-contador-sair>Não contar minhas visitas</button>
+
+      <h2>Serviços de terceiros nas páginas</h2>
+      <ul>
+        <li><b>Google Maps</b> — o mapa da página de contato vem do Google, que pode gravar cookies próprios.</li>
+        <li><b>Google Fonts</b> — as fontes vêm dos servidores do Google, que recebem o endereço IP do aparelho para entregá-las.</li>
+        <li><b>WhatsApp</b> — a conversa acontece no aplicativo, sob a política de privacidade do WhatsApp.</li>
+      </ul>
+
+      <h2>Seus direitos</h2>
+      <p>Pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir confirmação de que
+        tratamos dados seus, acesso, correção ou exclusão, e se opor à medição a qualquer momento — os
+        botões acima já fazem isso. Para os demais pedidos, chame no WhatsApp.</p>
+
+      <h2>Mudanças nesta política</h2>
+      <p>Se o site passar a usar outra ferramenta de medição, esta página é atualizada antes, com a
+        nova data no topo.</p>
+    </div>
+  </section>
+
+</main>
+
+<div data-c="footer"></div>
+
+<script src="../assets/js/site.js?v=22"></script>
+<!-- medicao:body -->
+<!-- /medicao:body -->
+</body>
+</html>

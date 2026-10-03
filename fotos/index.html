@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- medicao:head -->
+<script>
+  // Medição liberada desde o primeiro carregamento, sem aviso de cookies (LGPD:
+  // legítimo interesse, explicado em /privacidade/). Fica desligada só se o
+  // visitante tocou em "Parar de medir este aparelho".
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  try { window.ghrMedicaoParada = localStorage.getItem('ghr-medicao') === 'parado'; } catch (e) {}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: window.ghrMedicaoParada ? 'denied' : 'granted'
+  });
+  window.GHR_CLARITY = '';
+</script>
+<!-- /medicao:head -->
 
 <script>
 /* Marca que o JavaScript esta vivo. O CSS so esconde conteudo para animar
@@ -11,8 +26,8 @@
 document.documentElement.className += ' js';
 </script>
 
-<title>Fotos | GHR Estética Automotiva</title>
-<meta name="description" content="Galeria de trabalhos da GHR Estética Automotiva: exterior, interior, pintura, motos e detalhes de acabamento.">
+<title>Fotos de Estética Automotiva em Coronel Fabriciano | GHR</title>
+<meta name="description" content="Fotos de polimento, vitrificação, lavagem detalhada e higienização feitos pela GHR Estética Automotiva em Coronel Fabriciano.">
 <link rel="canonical" href="https://ghresteticaautomotiva.com.br/fotos/">
 
 <meta name="theme-color" content="#07090c">
@@ -21,22 +36,22 @@ document.documentElement.className += ' js';
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="GHR Estética Automotiva">
-<meta property="og:title" content="Fotos | GHR Estética Automotiva">
-<meta property="og:description" content="Galeria de trabalhos da GHR Estética Automotiva: exterior, interior, pintura, motos e detalhes de acabamento.">
+<meta property="og:title" content="Fotos de Estética Automotiva em Coronel Fabriciano | GHR">
+<meta property="og:description" content="Fotos de polimento, vitrificação, lavagem detalhada e higienização feitos pela GHR Estética Automotiva em Coronel Fabriciano.">
 <meta property="og:url" content="https://ghresteticaautomotiva.com.br/fotos/">
-<meta property="og:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-213.jpg">
+<meta property="og:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v19-q.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fotos | GHR Estética Automotiva">
-<meta name="twitter:description" content="Galeria de trabalhos da GHR Estética Automotiva: exterior, interior, pintura, motos e detalhes de acabamento.">
-<meta name="twitter:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-213.jpg">
+<meta name="twitter:title" content="Fotos de Estética Automotiva em Coronel Fabriciano | GHR">
+<meta name="twitter:description" content="Fotos de polimento, vitrificação, lavagem detalhada e higienização feitos pela GHR Estética Automotiva em Coronel Fabriciano.">
+<meta name="twitter:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v19-q.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../assets/css/style.css?v=21">
+<link rel="stylesheet" href="../assets/css/style.css?v=22">
 <link rel="preload" as="image" type="image/webp"
-      href="../assets/img/gallery/w1440/ghr-135.webp"
-      imagesrcset="../assets/img/gallery/w720/ghr-135.webp 720w, ../assets/img/gallery/w1440/ghr-135.webp 1440w"
+      href="../assets/img/gallery/w1440/ghr-v10-q.webp"
+      imagesrcset="../assets/img/gallery/w720/ghr-v10-q.webp 720w, ../assets/img/gallery/w1440/ghr-v10-q.webp 1440w"
       fetchpriority="high">
 </head>
 
@@ -67,8 +82,8 @@ document.documentElement.className += ' js';
   <section class="phero">
     <div class="phero__bg">
       <picture>
-        <source type="image/webp" srcset="../assets/img/gallery/w720/ghr-135.webp 720w, ../assets/img/gallery/w1440/ghr-135.webp 1440w">
-        <img alt="" fetchpriority="high" width="1440" height="1440" src="../assets/img/gallery/ghr-135.jpg">
+        <source type="image/webp" srcset="../assets/img/gallery/w720/ghr-v10-q.webp 720w, ../assets/img/gallery/w1440/ghr-v10-q.webp 1440w">
+        <img alt="" fetchpriority="high" width="1440" height="1800" src="../assets/img/gallery/ghr-v10-q.jpg">
       </picture>
     </div>
     <div class="wrap">
@@ -76,7 +91,7 @@ document.documentElement.className += ' js';
         <a href="../">Home</a> <span aria-hidden="true">/</span> <span>Fotos</span>
       </nav>
       <span class="eyebrow">Galeria</span>
-      <h1 style="margin-top:1.1rem">Nosso trabalho.</h1>
+      <h1 style="margin-top:1.1rem">Trabalhos da GHR em<br>Coronel Fabriciano.</h1>
       <p class="lead">
         Fotos reais de veículos que passaram pela GHR. Clique em qualquer imagem
         para ampliar.
@@ -103,8 +118,8 @@ document.documentElement.className += ' js';
         </div>
         <div class="cta__media">
           <picture>
-            <source type="image/webp" srcset="../assets/img/gallery/w720/ghr-213.webp 720w, ../assets/img/gallery/w1440/ghr-213.webp 1440w" sizes="(max-width:900px) 100vw, 45vw">
-            <img alt="Veículo finalizado na GHR Estética Automotiva" loading="lazy" width="1440" height="1440" src="../assets/img/gallery/ghr-213.jpg">
+            <source type="image/webp" srcset="../assets/img/gallery/w720/ghr-v19-q.webp 720w, ../assets/img/gallery/w1440/ghr-v19-q.webp 1440w" sizes="(max-width:900px) 100vw, 45vw">
+            <img alt="Veículo finalizado na GHR Estética Automotiva" loading="lazy" width="1440" height="1800" src="../assets/img/gallery/ghr-v19-q.jpg">
           </picture>
         </div>
       </div>
@@ -115,6 +130,8 @@ document.documentElement.className += ' js';
 
 <div data-c="footer"></div>
 
-<script src="../assets/js/site.js?v=21"></script>
+<script src="../assets/js/site.js?v=22"></script>
+<!-- medicao:body -->
+<!-- /medicao:body -->
 </body>
 </html>

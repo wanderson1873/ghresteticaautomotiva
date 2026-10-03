@@ -60,6 +60,7 @@ GHR.initFooter = function () {
         </div>
         <div class="ftr__bottom">
           <span>© <span data-ano></span> ${biz.nome}. Todos os direitos reservados.</span>
+          <a href="${b}privacidade/">Privacidade</a>
         </div>
       </div>
     </footer>

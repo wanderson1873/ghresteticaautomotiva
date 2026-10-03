@@ -137,14 +137,14 @@ GHR.initWaLinks = function () {
 GHR.boot = function () {
   const componentes = [
     'initHeader', 'initFooter', 'initMarquee',
-    'initServices', 'initServiceDetail',
+    'initServices', 'initServiceDetail', 'initPorte', 'initClipes',
     'initScrollFeature', 'initDiferenciais', 'initProcesso', 'initEstofado',
     'initGallery',
     'initContactInfo', 'initContactForm', 'initHorarios', 'initMapa',
     'initPartnerPerfis', 'initPartnerEtapas', 'initPartnerForm',
     /* estes vêm por último: dependem do HTML que os anteriores criaram */
     'initWaLinks', 'initReveal', 'initHeadlines',
-    'initParallax', 'initProgress', 'initAnchors'
+    'initParallax', 'initProgress', 'initAnchors', 'initMedicao'
   ];
 
   const falhas = [];

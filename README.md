@@ -29,8 +29,9 @@ Depois abra <http://localhost:8099>.
 
 ```
 index.html                    Home
-servicos/index.html           Lista de serviços
-servicos/<slug>/index.html    Página de cada serviço (8 páginas geradas)
+servicos/index.html           Lista de serviços, com seletor de porte P/M/G (GERADA)
+servicos/<slug>/index.html    Página de cada serviço (8 páginas GERADAS)
+privacidade/index.html        Política de privacidade (noindex, fora do sitemap)
 fotos/index.html              Galeria completa com filtros e lightbox
 parcerias/index.html          Atendimento para empresas e frotas
 contato/index.html            Contato + formulário que abre o WhatsApp
@@ -47,7 +48,7 @@ assets/
   js/app.js                   Animações de rolagem, parallax, âncoras
   js/data/                    ⭐ CONTEÚDO EDITÁVEL (ver abaixo)
     business.js                 contato, endereço, horários, redes
-    services.js                 serviços, textos e preços
+    services.js                 GERADO a partir de ferramentas/servicos.py
     brands.js                   marcas do carrossel
     gallery.js                  fotos da galeria e categorias
     home.js                     textos das seções da home
@@ -55,18 +56,24 @@ assets/
   img/logo.svg                Logo vetorizada a partir do PDF original
   img/placa-ghr.png/.svg      Arte da placa GHR (padrão carro, 400x130 mm)
   img/placa-ghr-moto.png      Arte da placa GHR (padrão moto, 200x170 mm)
-  img/gallery/                213 fotos reais (136 na galeria — ver gallery.js)
-  img/gallery/banco-*.jpg     8 imagens de banco (ver CREDITOS-BANCO-DE-IMAGENS.md)
+  img/gallery/                fotos reais (136 na galeria — ver gallery.js)
+  img/gallery/ghr-vNN.jpg     quadros 9:16 tirados dos vídeos do cenário novo (2024+)
+  img/gallery/ghr-vNN-q.jpg   recorte 4:5 desses quadros (capas e cards)
+  video/                      vídeos curtos das páginas de serviço (gerar-clipes.py)
   img/gallery/_originais/     fotos originais, antes da troca de placa
   img/gallery/w720/           versões WebP usadas em cards e miniaturas
   img/gallery/w1440/          versões WebP das fotos grandes (hero, banner)
   img/brands/                 logotipos monocromáticos do carrossel de marcas
 
 ferramentas/
-  config.py                   * Domínio e rotas do site — fonte única
+  servicos.py                 ⭐ SERVIÇOS: textos, preços P/M/G, fotos, FAQ
+  gerar-paginas-servicos.py   * Gera /servicos/ inteiro + data/services.js
+  quadros.py / extrair-quadros.py  Fotos tiradas dos vídeos (ffmpeg + Real-ESRGAN)
+  gerar-clipes.py             Vídeos curtos (2025/2026) das páginas de serviço
+  medicao.py / aplicar-medicao.py  GTM, Clarity e contador próprio
+  config.py                   * Domínio, rotas e IDs de medição — fonte única
   preparar-publicacao.py      * Monta publicar/ só com o que vai ao servidor
   gerar-sitemap.py            Gera o sitemap.xml a partir das rotas reais
-  gerar-paginas-servicos.py   Recria as páginas de /servicos/<slug>/
   gerar-webp.py               Gera/atualiza as versões WebP (compara datas)
   definir-dominio.py          Troca o domínio no site E em config.py
   aplicar-placas.py           Troca a placa dos carros das fotos pela arte GHR
@@ -74,8 +81,8 @@ ferramentas/
   placa_lib.py                Motor da troca: perspectiva, luz, grão, borda
   detectar_quad.py            Acha os 4 cantos da placa dentro de uma caixa
 
-ghr_esteticaautomotiva/       Material bruto original (fotos e vídeos)
-logo - GHR.pdf                Logo original
+../ghr_esteticaautomotiva/    Material bruto original (fotos e vídeos)
+../logo - GHR.pdf             Logo original
 ```
 
 ---
@@ -102,19 +109,50 @@ arquivo precisa ser tocado.
 > divulgação da própria empresa (foto `ghr-049.jpg`) e do perfil do Instagram.
 > **Confirme antes de publicar** — o material é de 2020/2021.
 
-### `services.js` — serviços e preços
+### `ferramentas/servicos.py` — serviços, preços e fotos
 
-Os oito serviços são os divulgados pela empresa: Lavagem Tradicional, Lavagem
-Detalhada, Polimento Técnico, Cristalização, Espelhamento, Vitrificação,
-Higienização e Revitalização.
+**Os serviços não são mais editados em `services.js`.** Tudo sai de
+`ferramentas/servicos.py`; depois de editar, rode:
 
-- **Preço:** deixe `preco: null` enquanto não houver valor. Com `null` o site
-  não mostra nada — nem "R$ 0", nem "sob consulta". Para exibir, escreva o
-  texto exato: `preco: 'R$ 180'` ou `preco: 'a partir de R$ 250'`.
-- **Descrições:** todas estão marcadas com `// TEXTO PROVISÓRIO` e devem ser
-  substituídas pelos textos reais.
-- **Serviço novo:** acrescente o bloco em `services.js` e rode
-  `python ferramentas/gerar-paginas-servicos.py` para criar a página dele.
+```
+python ferramentas/gerar-paginas-servicos.py
+```
+
+Ele escreve `/servicos/` e as 8 páginas em **HTML completo** (o Google lê tudo
+sem depender de JavaScript, com JSON-LD de empresa, serviço, FAQ e migalhas),
+regrava `assets/js/data/services.js` (menu, rodapé, home) e o JSON-LD da home e
+do contato — nome, endereço e telefone iguais em todo o site.
+
+- **Preços por porte:** `'precos': {'P': 'R$ 80', 'M': 'R$ 100', 'G': 'R$ 120'}`.
+  Hoje são **valores de exemplo** (`PRECOS_PROVISORIOS = True`): aparecem com a
+  tarja "valor de exemplo", ficam fora do JSON-LD e o `preparar-publicacao.py`
+  **se recusa a montar o pacote**. Com os valores reais, troque para `False`.
+- **Texto visível curto** (nome, uma linha, o que inclui, preço). O texto longo,
+  para o Google e para IAs, fica no FAQ recolhido de cada página e na
+  `descricao` (meta description). Respostas marcadas `# CONFIRMAR` dependem da
+  empresa.
+- **Fotos:** `capa` é um recorte 4:5 do cenário novo; `galeria` mistura quadros
+  9:16 dos vídeos e closes antigos em que o ambiente não aparece. Nenhuma foto é
+  recortada pelo CSS — a proporção do arquivo é a que aparece na tela.
+- **Serviço novo:** acrescente o bloco e rode o gerador; a pasta é criada sozinha.
+
+### Fotos e vídeos do cenário novo
+
+O ambiente da GHR mudou em 2024 (parede azul, teto de LED em zigue-zague, piso
+de placas). Topo das páginas, capas, cards e home usam **só** o cenário novo.
+
+```
+python ferramentas/extrair-quadros.py     quadros listados em quadros.py
+python ferramentas/gerar-clipes.py        vídeos curtos (CLIPES no próprio script)
+python ferramentas/gerar-webp.py
+python ferramentas/gerar-paginas-servicos.py
+```
+
+`extrair-quadros.py` pega o quadro mais nítido perto do segundo indicado,
+amplia com Real-ESRGAN, troca a placa (cadastrada em `placas.py`) e gera o
+recorte 4:5. Programas, uma vez só: `winget install Gyan.FFmpeg` e o
+Real-ESRGAN ncnn descompactado em `%USERPROFILE%/tools/realesrgan/`.
+Vídeos novos: coloque em `../ghr_esteticaautomotiva/` com a data no nome.
 
 ### `gallery.js` — fotos
 
@@ -130,30 +168,10 @@ etiqueta sobre a miniatura saem daí. Sem `alt` próprio, o texto é montado por
 Para acrescentar fotos: copie o arquivo para `assets/img/gallery/`, rode
 `python ferramentas/gerar-webp.py` e adicione uma linha na lista.
 
-### Imagens de banco na home
+### Sem imagens de banco
 
-Existem **8 arquivos `banco-*.jpg`** (Pexels, licença livre inclusive
-comercial). Em uso na home: o fundo do hero, a faixa "Não é apenas limpeza" e
-**três** dos quatro cartões de "Cuidado em cada etapa" — o cartão 02 (Correção)
-passou a usar foto real da GHR, porque a imagem de banco mostrava alguém com
-borrifador e pano, o que não é correção de pintura. `banco-vitrificacao.jpg` é
-a capa do serviço de Vitrificação; `banco-quem-somos.jpg` **não é mais usado**.
-
-Cada etapa declara a origem da própria foto em `home.js`, no campo `legenda`, e
-o rótulo aparece na tela ("Imagem ilustrativa da etapa" / "Trabalho da GHR").
-Sem esse rótulo o visitante lê as quatro como serviço executado pela empresa.
-
-**Quem somos não usa mais foto de banco.** A imagem anterior mostrava um
-profissional de uniforme de outra operação sob o título "Quem somos", com o
-cartão de localização da GHR por cima — a composição sugeria equipe e estrutura
-que não são da empresa. No lugar dela entrou uma foto real de trabalho entregue
-(`ghr-187.jpg`), até existir uma foto da equipe atual.
-
-O resto da home é foto real da empresa, e a galeria em `/fotos/` é 100% real.
-
-A lista de origem de cada imagem está em
-`assets/img/gallery/CREDITOS-BANCO-DE-IMAGENS.md`. Ao trocar alguma, baixe de
-um banco com licença comercial e atualize esse arquivo.
+Desde 10/2026 o site não usa nenhuma imagem de banco: os antigos `banco-*.jpg`
+foram trocados por fotos do cenário novo da GHR e removidos.
 
 ### Placas dos veículos
 
@@ -208,8 +226,11 @@ de destaque de limpeza de estofado (`GHR.estofado` e `GHR.estofadoItens`).
 - [ ] Conferir os `horarios` (hoje: segunda a sábado, 8h às 18h; domingo fechado)
 - [ ] Confirmar área de cobertura e condições de **busca e entrega**
 - [ ] Confirmar as condições do atendimento **B2B** em `/parcerias/`
-- [ ] Revisar os textos marcados com `// TEXTO PROVISÓRIO` em `services.js`
-- [ ] Definir os preços (ou deixar `null`)
+- [ ] Revisar as respostas marcadas `# CONFIRMAR` em `ferramentas/servicos.py`
+- [ ] Preços reais P/M/G em `servicos.py` e `PRECOS_PROVISORIOS = False`
+- [ ] Taxa da busca e entrega (hoje: "conforme a distância")
+- [ ] IDs de medição em `config.py` (GTM, Clarity, chave do painel) e
+      `python ferramentas/aplicar-medicao.py`
 - [ ] Trocar o domínio provisório:
       `python ferramentas/definir-dominio.py https://www.seudominio.com.br`
 - [ ] Regerar o que depende do domínio: `gerar-paginas-servicos.py` e `gerar-sitemap.py`
@@ -300,8 +321,13 @@ certos.
 - **Nada é inventado.** Números de clientes, anos de mercado, avaliações e
   depoimentos não existem no site porque não havia essa informação no material
   fornecido. Campos vazios simplesmente não são renderizados.
-- **Vídeos ignorados** nesta versão, conforme combinado. Os 44 arquivos `.mp4`
-  continuam na pasta original.
+- **Vídeos:** só trechos curtos de 2025/2026, sem som, um por página de serviço,
+  baixados quando aparecem na tela. São os únicos `.mp4` publicados
+  (`assets/video/`); o nginx e o `preparar-publicacao.py` recusam qualquer outro.
+- **Medição** igual à do Lava Jato Beira Rio: Consent Mode + GTM + Clarity sem
+  aviso de cookies (legítimo interesse, explicado em `/privacidade/`), com botão
+  para parar de medir, e o contador próprio (`s.derson.cloud`), que só conta
+  visitas vindas do domínio cadastrado.
 - **Formulário sem backend:** monta a mensagem e abre o WhatsApp. O site não
   guarda nada e não tem servidor próprio — mas o texto vai junto na URL do
   WhatsApp, então chega ao WhatsApp assim que a conversa abre. Os avisos na

@@ -30,12 +30,20 @@ GHR.business = {
 
   /* ---------------------------- endereço ---------------------------- */
   endereco: {
-    rua:    'Rua Caiapós, 143',         // ← confirmar
+    rua:    'Rua Caiapós, 143',         // confirmado pela empresa (10/2026)
     bairro: 'Caladinho de Cima',
     cidade: 'Coronel Fabriciano',
     uf:     'MG',
-    cep:    ''                          // ← vazio = não aparece
+    cep:    '35171-270'                 // CEP do Perfil da Empresa no Google
   },
+
+  /* Perfil da Empresa no Google (Maps). Coordenadas e place_id lidos do
+     próprio perfil — alimentam o JSON-LD (geo, hasMap) e o botão de rota.  */
+  geo:     { lat: -19.5053841, lng: -42.5976822 },
+  placeId: 'ChIJKa8uwZhVpQARZctH1gXoe_E',
+
+  /* Busca e entrega: confirmada pela empresa. Taxa conforme a distância. */
+  areaAtendida: ['Coronel Fabriciano', 'Ipatinga', 'Timóteo', 'Santana do Paraíso'],
 
   /* ----------------------------- redes ------------------------------ */
   instagram:       'https://www.instagram.com/ghr_esteticaautomotiva/',
@@ -115,5 +123,6 @@ GHR.mapaEmbed = function () {
 /* Link do Google Maps montado a partir do endereço acima. */
 GHR.mapsLink = function () {
   const q = encodeURIComponent(GHR.business.nome + ' ' + GHR.enderecoLinha());
-  return 'https://www.google.com/maps/search/?api=1&query=' + q;
+  const id = GHR.business.placeId ? '&query_place_id=' + GHR.business.placeId : '';
+  return 'https://www.google.com/maps/search/?api=1&query=' + q + id;
 };

@@ -5,7 +5,7 @@
 
 O sitemap era escrito à mão e ficou desatualizado: /parcerias/ existia no menu,
 no rodapé e como página publicada, mas não estava listado. Agora as rotas saem
-de ferramentas/config.py (fixas + uma por serviço de data/services.js), então
+de ferramentas/config.py (fixas + uma por serviço de ferramentas/servicos.py), então
 acrescentar um serviço já entra no sitemap sozinho.
 
 lastmod usa a data de modificação de cada index.html — não a data de hoje.

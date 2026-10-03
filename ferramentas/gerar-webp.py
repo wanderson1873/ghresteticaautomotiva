@@ -39,11 +39,6 @@ GRANDES = [
     # entraram na curadoria de 09/2026:
     # ghr-210 e a etapa "Correcao" da home; as demais, o mosaico de resultados
     'ghr-210.jpg', 'ghr-017.jpg',
-    # as quatro etapas da home entram com grande:true no GHR.pic
-    'banco-hero.jpg', 'banco-faixa.jpg',
-    'banco-etapa-01.jpg', 'banco-etapa-02.jpg',
-    'banco-etapa-03.jpg', 'banco-etapa-04.jpg',
-    'banco-vitrificacao.jpg', 'banco-quem-somos.jpg',
 ]
 
 
@@ -102,7 +97,10 @@ def main():
     total = 0
     for nome in fotos:
         total += gerar(nome, 720, 'w720', 76, refazer)
-    for nome in dict.fromkeys(GRANDES + capas_da_galeria()):
+    # recortes 4:5 dos vídeos (ghr-vNN-q.jpg): capas dos serviços e cards,
+    # que no celular ocupam a largura toda da tela
+    recortes = [f for f in fotos if f.endswith('-q.jpg')]
+    for nome in dict.fromkeys(GRANDES + capas_da_galeria() + recortes):
         if os.path.exists(os.path.join(GALERIA, nome)):
             total += gerar(nome, 1440, 'w1440', 74, refazer)
 

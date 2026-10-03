@@ -11,20 +11,17 @@
 window.GHR = window.GHR || {};
 
 /* Seção com rolagem sticky — "Cuidado em cada etapa".
-   Cada etapa declara de onde vem a foto:
-     legenda: 'Imagem ilustrativa'  → arquivo de banco (banco-etapa-*.jpg)
-     legenda: 'Trabalho da GHR'     → foto real da empresa
-   O rótulo aparece na tela. Sem ele, o visitante lê as quatro como serviço
-   executado pela GHR — que é o que a auditoria apontou.
-   Ver assets/img/gallery/CREDITOS-BANCO-DE-IMAGENS.md */
+   Desde 10/2026 as quatro fotos são da GHR (cenário novo, tiradas dos vídeos
+   por ferramentas/extrair-quadros.py) — nenhuma imagem de banco no site.
+   O campo legenda continua: o rótulo aparece na tela. */
 GHR.etapas = [
   {
     n: '01',
     titulo: 'Limpeza',
     texto: 'Tudo começa com a sujeira fora do caminho: pré-lavagem, lavagem em etapas e limpeza dos pontos que ficam escondidos.',
-    imagem: 'banco-etapa-01.jpg',
-    alt: 'SUV coberto de espuma durante a lavagem',
-    legenda: 'Imagem ilustrativa da etapa'
+    imagem: 'ghr-v16-q.jpg',
+    alt: 'SUV azul limpo no box da GHR, com piso quadriculado e luzes de LED',
+    legenda: 'Trabalho da GHR'
   },
   {
     n: '02',
@@ -44,17 +41,17 @@ GHR.etapas = [
     n: '03',
     titulo: 'Proteção',
     texto: 'A pintura corrigida recebe a camada de proteção — mais brilho, menos sujeira aderindo e resultado que se mantém por mais tempo com a manutenção combinada.',
-    imagem: 'banco-etapa-03.jpg',
-    alt: 'Aplicação de produto de proteção sobre pintura escura',
-    legenda: 'Imagem ilustrativa da etapa'
+    imagem: 'ghr-v12-q.jpg',
+    alt: 'Sedã azul com a pintura brilhando sob o teto de LED da GHR',
+    legenda: 'Trabalho da GHR'
   },
   {
     n: '04',
     titulo: 'Acabamento',
     texto: 'Revisão item por item antes da entrega: vidros, frisos, plásticos, rodas e interior conferidos de perto.',
-    imagem: 'banco-etapa-04.jpg',
-    alt: 'Acabamento final passado com pano sobre pintura escura',
-    legenda: 'Imagem ilustrativa da etapa'
+    imagem: 'ghr-v21-q.jpg',
+    alt: 'Forro de porta e soleira limpos, conferidos antes da entrega',
+    legenda: 'Trabalho da GHR'
   }
 ];
 
@@ -120,9 +117,11 @@ GHR.estofadoItens = [
    cortadas na diagonal) e ghr-213 deixou de ser a principal, porque a rua e a
    fachada ocupavam mais quadro que o carro. As três continuam em /fotos/. */
 GHR.galleryHome = [
-  { src: 'ghr-108.jpg', pos: '50% 55%' },
-  { src: 'ghr-111.jpg', pos: '50% 50%' },
-  { src: 'ghr-017.jpg', pos: '50% 50%' },
-  { src: 'ghr-093.jpg', pos: '50% 50%' },
-  { src: 'ghr-213.jpg', pos: '50% 50%' }
+  /* 10/2026: só o cenário novo (parede azul, teto de LED), em recortes 4:5
+     que o mosaico mostra inteiros. As fotos antigas continuam em /fotos/. */
+  { src: 'ghr-v18-q.jpg', alt: 'SUV preto finalizado no box da GHR, sob o teto de LED' },
+  { src: 'ghr-v10-q.jpg', alt: 'Sedã preto polido refletindo as luzes de LED' },
+  { src: 'ghr-v11-q.jpg', alt: 'Capô azul-escuro espelhado refletindo o teto de LED' },
+  { src: 'ghr-v19-q.jpg', alt: 'SUV preto de frente com a pintura brilhando' },
+  { src: 'ghr-v16-q.jpg', alt: 'SUV azul limpo no box da GHR' }
 ];

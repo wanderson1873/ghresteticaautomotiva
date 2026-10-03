@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- medicao:head -->
+<script>
+  // Medição liberada desde o primeiro carregamento, sem aviso de cookies (LGPD:
+  // legítimo interesse, explicado em /privacidade/). Fica desligada só se o
+  // visitante tocou em "Parar de medir este aparelho".
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  try { window.ghrMedicaoParada = localStorage.getItem('ghr-medicao') === 'parado'; } catch (e) {}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: window.ghrMedicaoParada ? 'denied' : 'granted'
+  });
+  window.GHR_CLARITY = '';
+</script>
+<!-- /medicao:head -->
 
 <script>
 /* Marca que o JavaScript esta vivo. O CSS so esconde conteudo para animar
@@ -11,8 +26,8 @@
 document.documentElement.className += ' js';
 </script>
 
-<title>Contato | GHR Estética Automotiva</title>
-<meta name="description" content="Fale com a GHR Estética Automotiva em Coronel Fabriciano: WhatsApp, endereço e Instagram.">
+<title>Contato e Endereço | GHR Estética Automotiva em Coronel Fabriciano</title>
+<meta name="description" content="GHR Estética Automotiva: Rua Caiapós, 143, Caladinho de Cima, Coronel Fabriciano - MG. WhatsApp (31) 98692-6513. Segunda a sábado, 8h às 18h.">
 <link rel="canonical" href="https://ghresteticaautomotiva.com.br/contato/">
 
 <meta name="theme-color" content="#07090c">
@@ -21,56 +36,91 @@ document.documentElement.className += ' js';
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="GHR Estética Automotiva">
-<meta property="og:title" content="Contato | GHR Estética Automotiva">
-<meta property="og:description" content="Fale com a GHR Estética Automotiva em Coronel Fabriciano: WhatsApp, endereço e Instagram.">
+<meta property="og:title" content="Contato e Endereço | GHR Estética Automotiva em Coronel Fabriciano">
+<meta property="og:description" content="GHR Estética Automotiva: Rua Caiapós, 143, Caladinho de Cima, Coronel Fabriciano - MG. WhatsApp (31) 98692-6513. Segunda a sábado, 8h às 18h.">
 <meta property="og:url" content="https://ghresteticaautomotiva.com.br/contato/">
-<meta property="og:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-078.jpg">
+<meta property="og:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v18-q.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contato | GHR Estética Automotiva">
-<meta name="twitter:description" content="Fale com a GHR Estética Automotiva em Coronel Fabriciano: WhatsApp, endereço e Instagram.">
-<meta name="twitter:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-078.jpg">
+<meta name="twitter:title" content="Contato e Endereço | GHR Estética Automotiva em Coronel Fabriciano">
+<meta name="twitter:description" content="GHR Estética Automotiva: Rua Caiapós, 143, Caladinho de Cima, Coronel Fabriciano - MG. WhatsApp (31) 98692-6513. Segunda a sábado, 8h às 18h.">
+<meta name="twitter:image" content="https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v18-q.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "AutoWash",
-  "@id": "https://ghresteticaautomotiva.com.br/#negocio",
-  "name": "GHR Estética Automotiva",
-  "description": "Estética automotiva em Coronel Fabriciano — lavagem detalhada, polimento técnico, cristalização, espelhamento, vitrificação, higienização e revitalização.",
-  "url": "https://ghresteticaautomotiva.com.br/",
-  "telephone": "+5531986926513",
-  "image": "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-143.jpg",
-  "logo": "https://ghresteticaautomotiva.com.br/assets/img/logo.svg",
-  "address": {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "AutoWash",
+   "@id": "https://ghresteticaautomotiva.com.br/#negocio",
+   "name": "GHR Estética Automotiva",
+   "url": "https://ghresteticaautomotiva.com.br/",
+   "telephone": "+5531986926513",
+   "image": "https://ghresteticaautomotiva.com.br/assets/img/gallery/ghr-v18-q.jpg",
+   "logo": "https://ghresteticaautomotiva.com.br/assets/img/logo.svg",
+   "priceRange": "$$",
+   "paymentAccepted": "Cartão de crédito, Pix, Dinheiro",
+   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Rua Caiapós, 143",
+    "streetAddress": "Rua Caiapós, 143 - Caladinho de Cima",
     "addressLocality": "Coronel Fabriciano",
     "addressRegion": "MG",
+    "postalCode": "35171-270",
     "addressCountry": "BR"
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": "Coronel Fabriciano"
-  },
-  "openingHoursSpecification": [
+   },
+   "areaServed": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "08:00",
-      "closes": "18:00"
+     "@type": "City",
+     "name": "Coronel Fabriciano"
+    },
+    {
+     "@type": "City",
+     "name": "Ipatinga"
+    },
+    {
+     "@type": "City",
+     "name": "Timóteo"
+    },
+    {
+     "@type": "City",
+     "name": "Santana do Paraíso"
     }
-  ],
-  "sameAs": ["https://www.instagram.com/ghr_esteticaautomotiva/"]
+   ],
+   "hasMap": "https://www.google.com/maps/search/?api=1&query=GHR%20Est%C3%A9tica%20Automotiva%20Rua%20Caiap%C3%B3s%2C%20143%2C%20Coronel%20Fabriciano&query_place_id=ChIJKa8uwZhVpQARZctH1gXoe_E",
+   "sameAs": [
+    "https://www.instagram.com/ghr_esteticaautomotiva/"
+   ],
+   "openingHoursSpecification": [
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+     ],
+     "opens": "08:00",
+     "closes": "18:00"
+    }
+   ],
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -19.5053841,
+    "longitude": -42.5976822
+   }
+  }
+ ]
 }
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../assets/css/style.css?v=21">
+<link rel="stylesheet" href="../assets/css/style.css?v=22">
 <link rel="preload" as="image" type="image/webp"
-      href="../assets/img/gallery/w1440/ghr-078.webp"
-      imagesrcset="../assets/img/gallery/w720/ghr-078.webp 720w, ../assets/img/gallery/w1440/ghr-078.webp 1440w"
+      href="../assets/img/gallery/w1440/ghr-v18-q.webp"
+      imagesrcset="../assets/img/gallery/w720/ghr-v18-q.webp 720w, ../assets/img/gallery/w1440/ghr-v18-q.webp 1440w"
       fetchpriority="high">
 </head>
 
@@ -101,8 +151,8 @@ document.documentElement.className += ' js';
   <section class="phero">
     <div class="phero__bg">
       <picture>
-        <source type="image/webp" srcset="../assets/img/gallery/w720/ghr-078.webp 720w, ../assets/img/gallery/w1440/ghr-078.webp 1440w">
-        <img alt="" fetchpriority="high" width="1440" height="1440" src="../assets/img/gallery/ghr-078.jpg">
+        <source type="image/webp" srcset="../assets/img/gallery/w720/ghr-v18-q.webp 720w, ../assets/img/gallery/w1440/ghr-v18-q.webp 1440w">
+        <img alt="" fetchpriority="high" width="1440" height="1800" src="../assets/img/gallery/ghr-v18-q.jpg">
       </picture>
     </div>
     <div class="wrap">
@@ -110,7 +160,7 @@ document.documentElement.className += ' js';
         <a href="../">Home</a> <span aria-hidden="true">/</span> <span>Contato</span>
       </nav>
       <span class="eyebrow">Contato</span>
-      <h1 style="margin-top:1.1rem">Vamos cuidar<br>do seu carro?</h1>
+      <h1 style="margin-top:1.1rem">Fale com a GHR em<br>Coronel Fabriciano.</h1>
       <p class="lead">
         O atendimento é pelo WhatsApp. Conte o modelo do veículo e o que ele
         precisa — a gente responde com prazo e valor.
@@ -125,7 +175,7 @@ document.documentElement.className += ' js';
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">Onde estamos</span>
-        <h2 style="margin-top:1.1rem">Informações de contato.</h2>
+        <h2 style="margin-top:1.1rem">Endereço, telefone e horário.</h2>
       </div>
       <div data-c="contact-info"></div>
 
@@ -164,6 +214,8 @@ document.documentElement.className += ' js';
 
 <div data-c="footer"></div>
 
-<script src="../assets/js/site.js?v=21"></script>
+<script src="../assets/js/site.js?v=22"></script>
+<!-- medicao:body -->
+<!-- /medicao:body -->
 </body>
 </html>

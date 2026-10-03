@@ -12,7 +12,7 @@
   /* Versão dos arquivos. Entra como ?v= no fim de cada URL para o navegador
      buscar a versão nova em vez de reaproveitar a antiga do cache.
      Depois de alterar CSS ou JS, rode:  python ferramentas/bump-versao.py     */
-  var VERSAO = '21';
+  var VERSAO = '22';
 
   var arquivos = [
     /* dados — é aqui que o conteúdo do site é editado */
@@ -35,6 +35,8 @@
     'components/contact.js',
     'components/hours-map.js',
     'components/partners.js',
+    'components/servicos-pagina.js',
+    'components/medicao.js',
     /* inicialização */
     'app.js'
   ];

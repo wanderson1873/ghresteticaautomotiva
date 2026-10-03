@@ -22,6 +22,13 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # PROVISÓRIO enquanto o domínio definitivo não estiver contratado.
 DOMINIO = 'https://ghresteticaautomotiva.com.br'
 
+# --- medição (ver medicao.py) ------------------------------------------------
+# Vazio = a ferramenta não entra no site. Depois de preencher, rode
+# gerar-paginas-servicos.py e aplicar-medicao.py.
+GTM_ID = ''          # Google Tag Manager, ex.: 'GTM-XXXXXXX'
+CLARITY_ID = ''      # Microsoft Clarity, ex.: 'abcd1234ef'
+PAINEL_CHAVE = ''    # chave do site na tabela `sites` do painel-trafego
+
 # Rotas públicas do site, na ordem em que entram no sitemap.
 # As páginas de serviço são acrescentadas a partir de data/services.js.
 ROTAS_FIXAS = ['/', '/servicos/', '/fotos/', '/parcerias/', '/contato/']
@@ -36,10 +43,9 @@ def versao():
 
 
 def slugs_de_servicos():
-    """Lê os slugs de assets/js/data/services.js, na ordem do arquivo."""
-    caminho = os.path.join(RAIZ, 'assets', 'js', 'data', 'services.js')
-    with open(caminho, encoding='utf-8') as f:
-        return re.findall(r"slug:\s*'([^']+)'", f.read())
+    """Slugs dos serviços, na ordem de ferramentas/servicos.py (fonte única)."""
+    from servicos import SERVICOS
+    return [s['slug'] for s in SERVICOS]
 
 
 def rotas():

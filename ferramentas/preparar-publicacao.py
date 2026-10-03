@@ -40,9 +40,11 @@ PASTAS = [
     'assets/css',
     'assets/js',
     'assets/img',
+    'assets/video',
     'contato',
     'fotos',
     'parcerias',
+    'privacidade',
     'servicos',
 ]
 
@@ -51,10 +53,19 @@ PASTAS_PROIBIDAS = {'_originais', '__pycache__', '.git'}
 EXTENSOES_PROIBIDAS = {'.py', '.pyc', '.pdf', '.md', '.psd', '.mp4', '.zip'}
 
 
+def video_do_site(caminho_rel, nome):
+    """Os clipes curtos de assets/video/ (gerar-clipes.py) são os únicos .mp4
+    publicados — os vídeos brutos continuam proibidos em qualquer outro lugar."""
+    return (caminho_rel.replace(os.sep, '/') == 'assets/video'
+            and nome.lower().endswith('.mp4'))
+
+
 def permitido(caminho_rel, nome):
     partes = caminho_rel.replace(os.sep, '/').split('/')
     if any(p in PASTAS_PROIBIDAS for p in partes):
         return False
+    if video_do_site(caminho_rel, nome):
+        return True
     if os.path.splitext(nome)[1].lower() in EXTENSOES_PROIBIDAS:
         return False
     if nome.startswith('.'):
@@ -63,6 +74,14 @@ def permitido(caminho_rel, nome):
 
 
 def main():
+    # Preço de exemplo não vai ao ar: o site mostraria um valor inventado.
+    from servicos import PRECOS_PROVISORIOS
+    if PRECOS_PROVISORIOS and '--aceitar-precos-de-exemplo' not in sys.argv:
+        sys.exit('ERRO: os preços em ferramentas/servicos.py ainda são de EXEMPLO '
+                 '(PRECOS_PROVISORIOS = True).\n'
+                 'Preencha os valores reais, troque para False '
+                 'e rode gerar-paginas-servicos.py antes de publicar.')
+
     if os.path.exists(DESTINO):
         shutil.rmtree(DESTINO)
     os.makedirs(DESTINO)
