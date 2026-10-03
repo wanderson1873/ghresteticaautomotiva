@@ -21,7 +21,7 @@ import numpy as np
 from PIL import Image
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PDF = os.path.join(RAIZ, 'logo - GHR.pdf')
+PDF = os.path.join(os.path.dirname(RAIZ), 'logo - GHR.pdf')  # fica na pasta da marca, fora do site
 IMG = os.path.join(RAIZ, 'assets', 'img')
 AZUL = (0, 82, 162)          # cor medida no PDF original
 
