@@ -22,6 +22,14 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # PROVISÓRIO enquanto o domínio definitivo não estiver contratado.
 DOMINIO = 'https://ghresteticaautomotiva.com.br'
 
+# --- modo demonstração -------------------------------------------------------
+# True enquanto o site roda no endereço PROVISÓRIO, para mostrar ao cliente.
+# Nesse modo o preparar-publicacao.py aceita os preços de exemplo, mas o pacote
+# sai marcado para o Google NÃO indexar (noindex em todas as páginas e
+# robots.txt bloqueando tudo) — nada de preço inventado nem página provisória
+# na busca. No domínio definitivo: False, e a trava dos preços volta a valer.
+DEMONSTRACAO = True
+
 # --- medição (ver medicao.py) ------------------------------------------------
 # Vazio = a ferramenta não entra no site. Depois de preencher, rode
 # gerar-paginas-servicos.py e aplicar-medicao.py.

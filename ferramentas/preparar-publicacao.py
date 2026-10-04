@@ -73,10 +73,38 @@ def permitido(caminho_rel, nome):
     return True
 
 
+def marcar_demonstracao():
+    """Endereço provisório: nenhuma página entra no Google. Só o pacote é
+    alterado — os arquivos do projeto continuam prontos para o domínio real."""
+    import re
+    with open(os.path.join(DESTINO, 'robots.txt'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# Site em demonstração (endereço provisório): nada deve ser indexado.\n'
+                'User-agent: *\nDisallow: /\n')
+    paginas = 0
+    for dirpath, _, arquivos in os.walk(DESTINO):
+        for nome in arquivos:
+            if not nome.endswith('.html'):
+                continue
+            caminho = os.path.join(dirpath, nome)
+            with open(caminho, encoding='utf-8') as f:
+                html = f.read()
+            html = re.sub(r'<meta name="robots"[^>]*>\n?', '', html)
+            html = html.replace('<meta charset="utf-8">',
+                                '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 1)
+            with open(caminho, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(html)
+            paginas += 1
+    print('Demonstração: %d páginas com noindex e robots.txt bloqueando tudo.' % paginas)
+
+
 def main():
     # Preço de exemplo não vai ao ar: o site mostraria um valor inventado.
+    # Exceção: modo demonstração (endereço provisório, tudo com noindex).
     from servicos import PRECOS_PROVISORIOS
-    if PRECOS_PROVISORIOS and '--aceitar-precos-de-exemplo' not in sys.argv:
+    if PRECOS_PROVISORIOS and config.DEMONSTRACAO:
+        print('MODO DEMONSTRAÇÃO (config.DEMONSTRACAO = True): preços de exemplo liberados;\n'
+              'o pacote sai com noindex e robots.txt bloqueando tudo.\n')
+    elif PRECOS_PROVISORIOS and '--aceitar-precos-de-exemplo' not in sys.argv:
         sys.exit('ERRO: os preços em ferramentas/servicos.py ainda são de EXEMPLO '
                  '(PRECOS_PROVISORIOS = True).\n'
                  'Preencha os valores reais, troque para False '
@@ -140,6 +168,9 @@ def main():
         for c in proibidos:
             print('  ' + c)
         sys.exit(1)
+
+    if config.DEMONSTRACAO:
+        marcar_demonstracao()
 
     print('\nConferido: sem originais, sem acervo bruto, sem scripts.')
     print('Suba o conteúdo de publicar/ — e só ele.')
